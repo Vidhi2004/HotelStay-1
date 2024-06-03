@@ -49,11 +49,11 @@ app.get("/register", (req, res) => {
 
 // Handle Registration
 app.post('/register', (req, res) => {
-    const { username, firstName, lastName, email, phoneNumber, address, dob, password } = req.body;
+    const { userName, firstName, lastName, email, phoneNumber, address, dob, password } = req.body;
 
     // Check if username already exists
     const checkUsernameSql = 'SELECT * FROM Guests WHERE username = ?';
-    connection.query(checkUsernameSql, [username], (err, results) => {
+    connection.query(checkUsernameSql, [userName], (err, results) => {
         if (err) throw err;
 
         if (results.length > 0) {
@@ -80,7 +80,7 @@ app.post('/register', (req, res) => {
                         } else {
                             // Insert the new guest record
                             const insertSql = 'INSERT INTO Guests (username, First_name, Last_name, Email, Phone_no, Address, DOB, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-                            connection.query(insertSql, [username, firstName, lastName, email, phoneNumber, address, dob, password], (err, result) => {
+                            connection.query(insertSql, [userName, firstName, lastName, email, phoneNumber, address, dob, password], (err, result) => {
                                 if (err) throw err;
                                 console.log('Guest registered');
                                 req.session.successMessage = 'Registration successful. Please log in.';
