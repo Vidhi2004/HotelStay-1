@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Rooms - CozyStay</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/css/rooms.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">Available Rooms</h1>
+
+    <div class="row">
+        <% rooms.forEach(room => { %>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <!-- Random image from Unsplash -->
+                    <img class="card-img-top" src="https://source.unsplash.com/400x300/?hotel" alt="<%= room.Room_type %>">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= room.Room_type %></h4>
+                        <p class="card-text">Room Number: <%= room.Room_number %></p>
+                        <p class="card-text">Capacity: <%= room.Capacity %> guests</p>
+                        <p class="card-text">Price: $<%= room.Price %> per night</p>
+                    </div>
+                    <div class="card-footer">
+                        <% if (room.Status === 'Available') { %>
+                            <form action="/dashboard/book_room" method="POST">
+                                <input type="hidden" name="room_id" value="<%= room.Room_id %>">
+                                <input type="hidden" name="check_in_date" value="<%= today %>">
+                                <input type="hidden" name="check_out_date" value="<%= nextDay %>">
+                                <input type="hidden" name="amount" value="<%= room.Price %>">
+                                <select name="payment_method" class="custom-select mb-2">
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="Debit Card">Debit Card</option>
+                                    <option value="PayPal">PayPal</option>
+                                    <option value="Cash">Cash</option>
+                                </select>
+                                <button type="submit" class="btn btn-success btn-block">Book Room</button>
+                            </form>
+                        <% } else { %>
+                            <button class="btn btn-danger btn-block" disabled>Room Not Available</button>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

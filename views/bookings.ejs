@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - CozyStay</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/css/bookings.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">My Bookings</h1>
+
+    <div class="row">
+        <% bookings.forEach(booking => { %>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Booking ID: <%= booking.Booking_id %></h5>
+                        <p class="card-text">Room ID: <%= booking.Room_id %></p>
+                        <p class="card-text">Check-in Date: <%= booking.Check_in_date %></p>
+                        <p class="card-text">Check-out Date: <%= booking.Check_out_date %></p>
+                        <p class="card-text">Amount: $<%= booking.Amount %></p>
+                        <p class="card-text">Payment Status: <%= booking.Payment_status %></p>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

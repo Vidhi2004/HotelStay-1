@@ -1,0 +1,35 @@
+/* styles.css */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #343a40;  /* Dark text color */
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #6c757d;  /* Text color */
+}
+
+.my-4 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+</head>
+<body>
+<h1>Staff Management</h1>
+<a href="/staff/add">Add New Staff</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Staff ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Position</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% staff.forEach(staff => { %>
+        <tr>
+            <td><%= staff.Staff_id %></td>
+            <td><%= staff.First_name %></td>
+            <td><%= staff.Last_name %></td>
+            <td><%= staff.Position %></td>
+            <td>
+                <a href="/staff/edit/<%= staff.Staff_id %>">Edit</a>
+                <form action="/staff/delete/<%= staff.Staff_id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    <% }); %>
+    </tbody>
+</table>
+</body>
+</html>

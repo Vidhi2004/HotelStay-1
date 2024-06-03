@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CozyStay</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="dashboard-header text-center">
+                <h1>Welcome to Your Dashboard, <span class="username"><%= username %></span>!</h1>
+                <a href="/logout" class="btn btn-outline-light btn-logout">Logout</a>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card border-primary">
+                        <img class="card-img-top" src="https://source.unsplash.com/500x300/?hotel" alt="Rooms">
+                        <div class="card-body">
+                            <h5 class="card-title">Rooms</h5>
+                            <p class="card-text">Browse and book available rooms.</p>
+                            <a href="/dashboard/rooms" class="btn btn-primary">Explore</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-success">
+                        <img class="card-img-top" src="https://source.unsplash.com/500x300/?booking" alt="My Bookings">
+                        <div class="card-body">
+                            <h5 class="card-title">My Bookings</h5>
+                            <p class="card-text">View and manage your bookings.</p>
+                            <a href="/dashboard/bookings" class="btn btn-success">Explore</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-info">
+                        <img class="card-img-top" src="https://source.unsplash.com/500x300/?payment" alt="My Payments">
+                        <div class="card-body">
+                            <h5 class="card-title">My Payments</h5>
+                            <p class="card-text">Check your payment history.</p>
+                            <a href="/dashboard/payments" class="btn btn-info">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
