@@ -153,7 +153,7 @@ app.post('/dashboard/book_room', isLoggedIn, (req, res) => {
 
     // Insert into Bookings table
     const insertBookingSql = 'INSERT INTO Bookings (Guest_username, Room_id, Check_in_date, Check_out_date, Amount, Payment_status) VALUES (?, ?, ?, ?, ?, ?)';
-    connection.query(insertBookingSql, [guest_username, room_id, check_in_date, check_out_date, amount, 'Pending'], (err, result) => {
+    connection.query(insertBookingSql, [guest_username, room_id, check_in_date, check_out_date, amount, 'Paid'], (err, result) => {
         if (err) {
             res.render('book_room', { error: 'Error booking the room. Please try again.', today: check_in_date, nextDay: check_out_date });
         } else {
