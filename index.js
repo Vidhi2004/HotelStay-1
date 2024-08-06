@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
     host: '127.0.0.1', // Force use of IPv4
     user: 'root',
     database: 'CozyStay',
-    password: 'pass5678'
+    password: 'dbms'
 });
 
 app.use(express.urlencoded({ extended: true }));
@@ -49,11 +49,11 @@ app.get("/register", (req, res) => {
 
 // Handle Registration
 app.post('/register', (req, res) => {
-    const { username, firstName, lastName, email, phoneNumber, address, dob, password } = req.body;
+    const { userName, firstName, lastName, email, phoneNumber, address, dob, password } = req.body;
 
     // Check if username already exists
     const checkUsernameSql = 'SELECT * FROM Guests WHERE username = ?';
-    connection.query(checkUsernameSql, [username], (err, results) => {
+    connection.query(checkUsernameSql, [userName], (err, results) => {
         if (err) throw err;
 
         if (results.length > 0) {
@@ -80,7 +80,7 @@ app.post('/register', (req, res) => {
                         } else {
                             // Insert the new guest record
                             const insertSql = 'INSERT INTO Guests (username, First_name, Last_name, Email, Phone_no, Address, DOB, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-                            connection.query(insertSql, [username, firstName, lastName, email, phoneNumber, address, dob, password], (err, result) => {
+                            connection.query(insertSql, [userName, firstName, lastName, email, phoneNumber, address, dob, password], (err, result) => {
                                 if (err) throw err;
                                 console.log('Guest registered');
                                 req.session.successMessage = 'Registration successful. Please log in.';
@@ -153,7 +153,7 @@ app.post('/dashboard/book_room', isLoggedIn, (req, res) => {
 
     // Insert into Bookings table
     const insertBookingSql = 'INSERT INTO Bookings (Guest_username, Room_id, Check_in_date, Check_out_date, Amount, Payment_status) VALUES (?, ?, ?, ?, ?, ?)';
-    connection.query(insertBookingSql, [guest_username, room_id, check_in_date, check_out_date, amount, 'Pending'], (err, result) => {
+    connection.query(insertBookingSql, [guest_username, room_id, check_in_date, check_out_date, amount, 'Paid'], (err, result) => {
         if (err) {
             res.render('book_room', { error: 'Error booking the room. Please try again.', today: check_in_date, nextDay: check_out_date });
         } else {

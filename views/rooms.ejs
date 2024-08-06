@@ -12,13 +12,12 @@
 <body>
 <div class="container">
     <h1 class="my-4">Available Rooms</h1>
-
+<!--Dynamic image for each rooms-->
     <div class="row">
         <% rooms.forEach(room => { %>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <!-- Random image from Unsplash -->
-                    <img class="card-img-top" src="https://source.unsplash.com/400x300/?hotel" alt="<%= room.Room_type %>">
+                    <img class="card-img-top" src="<%= room.image_url %>" alt="<%= room.Room_type %>">
                     <div class="card-body">
                         <h4 class="card-title"><%= room.Room_type %></h4>
                         <p class="card-text">Room Number: <%= room.Room_number %></p>
